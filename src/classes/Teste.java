@@ -60,11 +60,17 @@ public class Teste {
 		estoque.validarInsercaoProduto("m", 0, 2);
 		
 		estoque.validarInsercaoProduto("o", 0, 3);
+	
+		estoque.deletarProduto("m", 3);
 		
-		estoque.deletarProduto("l", 1);
+		estoque.validarInsercaoProduto("m", 0, 1);
 		
 		estoque.deletarProduto("k", 1);
 		
+		estoque.deletarProduto("l", 1);
+		
+		estoque.deletarProduto("j", 1);
+
 		estoque.listarEstoque();
 		
 		estoque.mostrarStatusEstoque();
