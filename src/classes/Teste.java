@@ -39,7 +39,6 @@ public class Teste {
 		int quantidadeDeSessao = tamanhoEstoque / tamanhoSessao;
 
 		estoque = new Estoque(quantidadeDeSessao, tamanhoSessao);
-<<<<<<< HEAD
 
 		new Thread().sleep(1000);
 
@@ -200,46 +199,6 @@ public class Teste {
 			}
 
 		} while (operacao != 7);
-=======
-		
-		
-		estoque.validarInsercaoProduto("q", 0, 7);
-		
-		estoque.validarInsercaoProduto("q", 0, 2);
-		
-		estoque.validarInsercaoProduto("q", 0, 2);
-		
-        estoque.validarInsercaoProduto("j", 0, 4);
-        
-    	estoque.validarInsercaoProduto("q", 0, 1);
-		
-		estoque.validarInsercaoProduto("l", 0, 1);
-		
-		estoque.validarInsercaoProduto("m", 0, 3);
-		
-		estoque.validarInsercaoProduto("k", 0, 1);
-		
-		estoque.validarInsercaoProduto("m", 0, 2);
-		
-		estoque.validarInsercaoProduto("o", 0, 3);
-	
-		estoque.deletarProduto("m", 3);
-		
-		estoque.validarInsercaoProduto("m", 0, 1);
-		
-		estoque.deletarProduto("k", 1);
-		
-		estoque.deletarProduto("l", 1);
-		
-		estoque.deletarProduto("j", 1);
-
-		estoque.listarEstoque();
-		
-		estoque.mostrarStatusEstoque();
-		
-		System.out.println();
-	
->>>>>>> f22a4cb836ba0665a8f9b6215b3c11c7dbe600f7
 
 	}
 
