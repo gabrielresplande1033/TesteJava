@@ -190,7 +190,7 @@ public class Teste {
 				new Thread().sleep(2000);
 				break;
 			case 6:
-				estoque.realocarEstoque(estoque);
+				estoque = estoque.realocarEstoque(estoque);
 				new Thread().sleep(3000);
 				break;
 			case 7:

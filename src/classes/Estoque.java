@@ -23,20 +23,35 @@ public class Estoque {
 		boolean validaPossibilidadeInsersao = false;
 
 		boolean validaSeProdutoJaEstaInserido = false;
+		
+		int verificaSeProdutoEstaNoEstoque = verificaSeProdutoEstaEmEstoque(nomeProduto);
 
 		int auxQuantidade = quantidadeProduto;
-
+		
+		if(verificaSeProdutoEstaNoEstoque != -1) {
+			numeroSessao = verificaSeProdutoEstaNoEstoque;
+		}
+		
 		int auxNumSessao = numeroSessao;
 
 		forexterno: for (int i = numeroSessao; i < quantidadeSessao; i++) {
 
-			if (sessao[i].getProduto(0) != null && sessao[i].getProduto(0).getNome() != nomeProduto) {
+			if (sessao[i].getProduto(0) != null) {
+				
+				boolean ehIgual = false;
+				
+				if(sessao[i].getProduto(0).getNome().equals(nomeProduto)) {
+					ehIgual = true;
+				}
+				
+				if(!ehIgual) {
 				if (validaSeProdutoJaEstaInserido) {
 					auxQuantidade = -1;
 					break;
 				}
-				auxNumSessao = i + 1; // se a posição nao for vazio e nem o produto a ser inserido, pule a sessao
-				continue;
+				  auxNumSessao = i + 1; // se a posição nao for vazio e nem o produto a ser inserido, pule a sessao
+				 continue;
+				}
 			} else {
 				for (int j = 0; j < tamanhoSessao; j++) {
 					if (sessao[i].getProduto(j) == null) {
@@ -160,6 +175,23 @@ public class Estoque {
 
 		return contadorDeProdutos;
 	}
+	
+	public int verificaSeProdutoEstaEmEstoque(String nome) {
+		 
+		int estaNoEstoque = -1;
+
+		for (int i = 0; i < quantidadeSessao; i++) {
+			for (int j = 0; j < tamanhoSessao; j++) {
+				if (sessao[i].getProduto(j) != null) {
+					if (sessao[i].getProduto(j).getNome().equals(nome)) {
+						estaNoEstoque = i;
+					}    
+			     }
+			}
+		}
+
+		return estaNoEstoque;
+	}
 
 	public void mostrarStatusEstoque() {
 
@@ -203,9 +235,9 @@ public class Estoque {
 
 		}
 
-		System.out.printf("quantidadeEspacoLivre" + auxQuantidadeEspacoLivreEstoque);
+		System.out.printf("Quantidade Espaço Livre: " + auxQuantidadeEspacoLivreEstoque);
 		System.out.println();
-		System.out.printf("quantidadeConsecutivo " + maiorEspacoConsecutivoLivre);
+		System.out.printf("Quantidade de Espaços Livres Consecutivo: " + maiorEspacoConsecutivoLivre);
 		System.out.println();
 	}
 
@@ -260,7 +292,7 @@ public class Estoque {
 		}
 	}
 
-	public void realocarEstoque(Estoque estoque) {
+	public Estoque realocarEstoque(Estoque estoque) {
 
 		String auxNome = "";
 
@@ -315,6 +347,8 @@ public class Estoque {
 
 		estoque.listarEstoque();
 
+		return estoque;
+		
 	}
 
 	public int getTamanho() {
