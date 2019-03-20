@@ -162,14 +162,21 @@ public class Estoque {
 	}
 
 	public void mostrarStatusEstoque() {
+<<<<<<< HEAD
 
 		int auxQuantidadeEspacoLivreEstoque = 0;
 
+=======
+		
+		int quantidadeEspacoLivreEstoque = 0;
+		
+>>>>>>> f22a4cb836ba0665a8f9b6215b3c11c7dbe600f7
 		int quantidadeConsecutiva = 0;
 
 		int maiorEspacoConsecutivoLivre = 0;
 
 		boolean validarQuantidadeConsecutiva = true;
+<<<<<<< HEAD
 
 		for (int i = 0; i < quantidadeSessao; i++) {
 			for (int j = 0; j < tamanhoSessao; j++) {
@@ -204,6 +211,46 @@ public class Estoque {
 		}
 
 		System.out.printf("quantidadeEspacoLivre" + auxQuantidadeEspacoLivreEstoque);
+=======
+		
+		for(int i = 0; i < quantidadeSessao; i++) {
+			for(int j = 0; j < tamanhoSessao; j++) {
+				
+				if(sessao[i].getProduto(j) == null) {
+					quantidadeEspacoLivreEstoque++;
+				}
+				
+				if(sessao[i].getProduto(j) == null && j == 0) {
+					validarQuantidadeConsecutiva = true;
+				}
+				
+				if(sessao[i].getProduto(j) == null) {
+					quantidadeEspacoLivreEstoque++;
+					if(validarQuantidadeConsecutiva) {
+						quantidadeConsecutiva++;
+				    }
+		        }else {
+		        	if(quantidadeConsecutiva > maiorEspacoConsecutivoLivre) {
+		        		maiorEspacoConsecutivoLivre = quantidadeConsecutiva;
+		        	}
+		        	
+		        	validarQuantidadeConsecutiva = false;
+		        	quantidadeConsecutiva = 0;
+		        } 
+				
+				if(i == quantidadeSessao-1 && j == tamanhoSessao - 1) {
+					if(quantidadeConsecutiva > maiorEspacoConsecutivoLivre) {
+		        		maiorEspacoConsecutivoLivre = quantidadeConsecutiva;
+		        	}
+				}
+				
+			}
+		
+		}
+		
+		System.out.println();
+		System.out.printf("quantidadeEspacoLivre" + quantidadeEspacoLivreEstoque);
+>>>>>>> f22a4cb836ba0665a8f9b6215b3c11c7dbe600f7
 		System.out.println();
 		System.out.printf("quantidadeConsecutivo " + maiorEspacoConsecutivoLivre);
 		System.out.println();
